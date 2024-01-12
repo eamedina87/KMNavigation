@@ -3,8 +3,8 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.tab.*
-import navigation.PlayersTab
-import navigation.TeamsTab
+import navigation.players.PlayersTab
+import navigation.teams.TeamsTab
 
 @Composable
 fun TabNavigatorComponent(modifier: Modifier = Modifier) {

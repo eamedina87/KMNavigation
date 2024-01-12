@@ -1,4 +1,4 @@
-package navigation
+package navigation.teams
 
 import Team
 import TeamListScreen

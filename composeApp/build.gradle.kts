@@ -111,3 +111,6 @@ compose.desktop {
 compose.experimental {
     web.application {}
 }
+dependencies {
+    implementation(kotlin("reflect"))
+}

@@ -18,7 +18,7 @@ enum class Position {
     Goalkeeper, Defender, Midfielder, Attacker
 }
 
-class Player(val name: String, val position: Position, val number: Int, val team: Team, val country: String, val valueInMillions: Int)
+data class Player(val name: String, val position: Position, val number: Int, val team: Team, val country: String, val valueInMillions: Int)
 
 val allPlayers = listOf(
     Player("Federico Valverde", Position.Midfielder, 15, Team.RealMadrid, "Uruguay", 100),
@@ -55,6 +55,6 @@ val allPlayers = listOf(
     Player("Enzo Fernández", Position.Midfielder, 8, Team.Chelsea, "Argentina", 80),
     Player("Christopher Nkunku", Position.Midfielder, 18, Team.Chelsea, "France", 75),
     Player("James Madison", Position.Midfielder, 10, Team.Tottenham, "England", 70),
-    Player("Cristian Romer", Position.Defender, 17, Team.Tottenham, "Argentina", 65),
+    Player("Cristian Romero", Position.Defender, 17, Team.Tottenham, "Argentina", 65),
     Player("Dejan Kulusevski", Position.Attacker, 21, Team.Tottenham, "Sweden", 55),
 )

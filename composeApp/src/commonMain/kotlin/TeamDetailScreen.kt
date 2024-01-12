@@ -34,7 +34,7 @@ fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = 
         )
         PlayerListScreen(
             list = topPlayers,
-            modifier = modifier.padding(top = 24.dp)
+            onPlayerSelected = { }
         )
     }
 }

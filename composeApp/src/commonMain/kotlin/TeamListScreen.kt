@@ -1,3 +1,4 @@
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -8,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TeamListScreen(list: List<Team>, modifier: Modifier = Modifier) {
+fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {
     Column {
         Text("All Teams")
         LazyColumn(
@@ -16,15 +17,19 @@ fun TeamListScreen(list: List<Team>, modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             items(list.sortedBy { it.name }) { team ->
-                TeamItem(team)
+                TeamItem(team, onTeamSelected)
             }
         }
     }
 }
 
 @Composable
-private fun TeamItem(team: Team, modifier: Modifier = Modifier) {
-    Row(modifier = modifier.fillMaxWidth().height(56.dp)) {
+private fun TeamItem(team: Team, onItemClick: (Team) -> Unit, modifier: Modifier = Modifier) {
+    Row(modifier = modifier.
+        fillMaxWidth().
+        height(56.dp).
+        clickable { onItemClick(team) }
+    ) {
         Text(
             text = team.name,
             fontSize = 22.sp,

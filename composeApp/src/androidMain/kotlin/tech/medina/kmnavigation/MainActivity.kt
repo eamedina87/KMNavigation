@@ -1,5 +1,6 @@
 package tech.medina.kmnavigation
 
+import TabNavigatorComponent
 import Team
 import TeamListScreen
 import android.os.Bundle
@@ -13,11 +14,12 @@ class MainActivity : ComponentActivity() {
         val allTeams = Team::class.sealedSubclasses.mapNotNull { it.objectInstance  }
 
         setContent {
-            TeamListScreen(allTeams, { Toast.makeText(this, "Team Selected: $it", Toast.LENGTH_SHORT).show() })
+            //TeamListScreen(allTeams, { Toast.makeText(this, "Team Selected: $it", Toast.LENGTH_SHORT).show() })
             val team = allTeams.random()
             //TeamDetailScreen(team, allPlayers.filter { it.team == team })//{ Toast.makeText(this, "Team Selected: $it", Toast.LENGTH_SHORT).show() })
             //PlayerDetailScreen(allPlayers.random())
             //PlayerListScreen(allPlayers, { Toast.makeText(this, "Player Selected: $it", Toast.LENGTH_SHORT).show() })
+            TabNavigatorComponent()
         }
     }
 }

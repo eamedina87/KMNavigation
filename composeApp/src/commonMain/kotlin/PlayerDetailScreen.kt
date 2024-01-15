@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 
-class PlayerDetailTabScreen(private val player:  Player) : Screen {
+class PlayerDetailTabScreen(private val player: Player) : Screen {
 
     @Composable
     override fun Content() {

@@ -9,6 +9,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
+import navigation.PlayersTab
 
 
 class TeamDetailTabScreen(private val team: Team) : Screen {
@@ -16,13 +20,22 @@ class TeamDetailTabScreen(private val team: Team) : Screen {
     @Composable
     override fun Content() {
         val topPlayers = allPlayers.filter { it.team == team.name }
-        TeamDetailScreen(team, topPlayers)
+        val navigator = LocalNavigator.currentOrThrow
+        val onPlayerSelected: (Player) -> Unit = { player ->
+            navigator.push(PlayerDetailTabScreen(player))
+        }
+        TeamDetailScreen(team, topPlayers, onPlayerSelected)
     }
 
 }
 
 @Composable
-fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = Modifier) {
+fun TeamDetailScreen(
+    team: Team,
+    topPlayers: List<Player>,
+    onPlayerSelected: (Player) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
         Text(
             text = team.name,
@@ -45,7 +58,7 @@ fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = 
         )
         PlayerListScreen(
             list = topPlayers,
-            onPlayerSelected = { }
+            onPlayerSelected = onPlayerSelected
         )
     }
 }

@@ -1,9 +1,10 @@
-package navigation.players
+package navigation
 
-import PlayerListTabScreen
-import allPlayers
+
+import TeamListTabScreen
+import allTeams
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -12,26 +13,26 @@ import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 
-object PlayersTab : Tab {
-
+object TeamsTab: Tab {
+    
     override val options: TabOptions
-    @Composable
+        @Composable
         get() {
-            val icon = rememberVectorPainter(Icons.Default.Person)
+            val icon = rememberVectorPainter(Icons.Default.Home)
             return remember {
                 TabOptions(
-                    index = 2u,
-                    title = "Players",
+                    index = 1u,
+                    title = "Teams",
                     icon = icon
                 )
             }
         }
-
+    
     @Composable
     override fun Content() {
-        Navigator(PlayerListTabScreen(allPlayers)) {
+        Navigator(TeamListTabScreen(allTeams)) {
             CurrentScreen()
         }
     }
-    
+
 }

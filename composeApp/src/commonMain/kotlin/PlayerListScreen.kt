@@ -17,13 +17,18 @@ class PlayerListTabScreen(private val list: List<Player>) : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val onPlayerSelected: (Player) -> Unit = { navigator.push(PlayerDetailTabScreen(it)) }
+        //selectedPlayer?.let(onPlayerSelected)
         PlayerListScreen(list, onPlayerSelected)
     }
 
 }
 
 @Composable
-fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
+fun PlayerListScreen(
+    list: List<Player>,
+    onPlayerSelected: (Player) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier.padding(top = 24.dp, bottom = 16.dp)
     ) {

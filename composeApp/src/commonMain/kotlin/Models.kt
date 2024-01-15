@@ -1,7 +1,7 @@
 
-class Team(val name: String, val image: String, val country: String, val valueInMillions: Int)
-
 data class Player(val name: String, val position: String, val number: Int, val team: String, val country: String, val valueInMillions: Int)
+
+data class Team(val name: String, val image: String, val country: String, val valueInMillions: Int)
 
 val allTeams = listOf(
     Team(name = "FC Barcelona", image = "compose-multiplatform.xml", country = "Spain", valueInMillions = 858),

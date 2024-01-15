@@ -8,7 +8,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
 
+
+class TeamDetailTabScreen(private val team: Team) : Screen {
+
+    @Composable
+    override fun Content() {
+        val topPlayers = allPlayers.filter { it.team == team.name }
+        TeamDetailScreen(team, topPlayers)
+    }
+
+}
 
 @Composable
 fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = Modifier) {

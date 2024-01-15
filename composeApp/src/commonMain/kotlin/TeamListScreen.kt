@@ -7,6 +7,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+
+class TeamListTabScreen(private val list: List<Team>) : Screen {
+
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
+        val onTeamSelected: (Team) -> Unit = { navigator.push(TeamDetailTabScreen(it)) }
+        TeamListScreen(list, onTeamSelected)
+    }
+
+}
 
 @Composable
 fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {

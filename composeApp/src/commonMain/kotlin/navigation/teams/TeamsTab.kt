@@ -1,12 +1,15 @@
 package navigation.teams
 
-import Team
-import TeamListScreen
+
+import TeamListTabScreen
+import allTeams
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 
@@ -27,7 +30,9 @@ object TeamsTab: Tab {
     
     @Composable
     override fun Content() {
-        TeamListScreen(listOf(Team.Barcelona, Team.RealMadrid, Team.Liverpool), {})
+        Navigator(TeamListTabScreen(allTeams)) {
+            CurrentScreen()
+        }
     }
 
 }

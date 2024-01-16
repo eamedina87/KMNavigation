@@ -15,7 +15,6 @@ import cafe.adriel.voyager.navigator.tab.TabOptions
 
 object PlayersTab : Tab {
 
-    var selectedPlayer: Player? = null
     override val options: TabOptions
     @Composable
         get() {

@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import navigation.BackButtonScaffold
 
 class PlayerListTabScreen(private val list: List<Player>) : Screen {
 
@@ -17,8 +18,9 @@ class PlayerListTabScreen(private val list: List<Player>) : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val onPlayerSelected: (Player) -> Unit = { navigator.push(PlayerDetailTabScreen(it)) }
-        //selectedPlayer?.let(onPlayerSelected)
-        PlayerListScreen(list, onPlayerSelected)
+        BackButtonScaffold {
+            PlayerListScreen(list, onPlayerSelected)
+        }
     }
 
 }

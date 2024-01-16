@@ -9,19 +9,26 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 
 @Composable
-fun BackButtonScaffold(screenContent: @Composable () -> Unit) {
+fun BackButtonScaffold(title: String = "", screenContent: @Composable () -> Unit) {
     val tabNavigator = LocalTabNavigator.current
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = tabNavigator.current.options.title) },
-                navigationIcon = {
-                    val navigator = LocalNavigator.currentOrThrow
-                    IconButton(onClick = { navigator.pop() }) {
-                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+            val topBarTitle = if (title.isBlank()) tabNavigator.current.options.title else title
+            val navigator = LocalNavigator.currentOrThrow
+            if (navigator.canPop) {
+                TopAppBar(
+                    title = { Text(text = topBarTitle ) },
+                    navigationIcon = {
+                        IconButton(onClick = { navigator.pop() }) {
+                            Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                        }
                     }
-                }
-            )
+                )
+            } else {
+                TopAppBar(
+                    title = { Text(text = topBarTitle) }
+                )
+            }
          },
     ) {
         screenContent()

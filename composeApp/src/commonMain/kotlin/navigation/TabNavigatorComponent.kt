@@ -17,10 +17,8 @@ fun TabNavigatorComponent(modifier: Modifier = Modifier) {
             )
         }
     ) { tabNavigator ->
+
         Scaffold(
-            topBar = {
-                TopAppBar(title = { Text(text = tabNavigator.current.options.title) })
-            },
             content = {
                 CurrentTab()
             },

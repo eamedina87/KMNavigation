@@ -12,6 +12,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
+import navigation.BackButtonScaffold
 import navigation.PlayersTab
 
 
@@ -24,7 +25,9 @@ class TeamDetailTabScreen(private val team: Team) : Screen {
         val onPlayerSelected: (Player) -> Unit = { player ->
             navigator.push(PlayerDetailTabScreen(player))
         }
-        TeamDetailScreen(team, topPlayers, onPlayerSelected)
+        BackButtonScaffold {
+            TeamDetailScreen(team, topPlayers, onPlayerSelected)
+        }
     }
 
 }

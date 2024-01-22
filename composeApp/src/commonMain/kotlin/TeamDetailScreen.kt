@@ -8,10 +8,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.node.Node
 
+class TeamDetailNode(
+    buildContext: BuildContext,
+    private val team: Team,
+    private val topPlayers: List<Player>,
+    private val onPlayerSelected: (Player) -> Unit
+) : Node(buildContext = buildContext) {
+
+    @Composable
+    override fun View(modifier: Modifier) {
+        TeamDetailScreen(team, topPlayers, onPlayerSelected)
+    }
+
+}
 
 @Composable
-fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = Modifier) {
+fun TeamDetailScreen(team: Team, topPlayers: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
         Text(
             text = team.name,
@@ -34,7 +49,7 @@ fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = 
         )
         PlayerListScreen(
             list = topPlayers,
-            onPlayerSelected = { }
+            onPlayerSelected = onPlayerSelected
         )
     }
 }

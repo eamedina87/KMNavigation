@@ -36,6 +36,8 @@ compose-foundation = { module = "androidx.compose.foundation:foundation", versio
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
 appyx-navigation = { module = "com.bumble.appyx:appyx-navigation", version.ref = "appyx-navigation" }
 appyx-material = { module = "com.bumble.appyx:material3", version.ref = "appyx-navigation" }
+appyx-spotlight = { module = "com.bumble.appyx:spotlight", version.ref = "appyx-navigation" }
+appyx-backstack = { module = "com.bumble.appyx:backstack", version.ref = "appyx-navigation" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

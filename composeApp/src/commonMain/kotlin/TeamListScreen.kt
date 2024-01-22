@@ -7,6 +7,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.node.Node
+
+class TeamListNode(
+    buildContext: BuildContext,
+    private val teams: List<Team>,
+    private val onTeamSelected: (Team) -> Unit
+) : Node(buildContext) {
+
+    @Composable
+    override fun View(modifier: Modifier) {
+        TeamListScreen(teams, onTeamSelected)
+    }
+
+}
 
 @Composable
 fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {

@@ -1,6 +1,9 @@
-data class Player(val name: String, val position: String, val number: Int, val team: String, val country: String, val valueInMillions: Int)
+import com.bumble.appyx.utils.multiplatform.Parcelable
+import com.bumble.appyx.utils.multiplatform.Parcelize
 
-data class Team(val name: String, val image: String, val country: String, val valueInMillions: Int)
+@Parcelize data class Player(val name: String, val position: String, val number: Int, val team: String, val country: String, val valueInMillions: Int) : Parcelable
+
+@Parcelize data class Team(val name: String, val image: String, val country: String, val valueInMillions: Int) : Parcelable
 
 val allTeams = listOf(
     Team(name = "FC Barcelona", image = "compose-multiplatform.xml", country = "Spain", valueInMillions = 858),

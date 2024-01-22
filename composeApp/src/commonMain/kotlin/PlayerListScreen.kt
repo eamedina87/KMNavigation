@@ -7,6 +7,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.node.Node
+
+class PlayersListNode(
+    buildContext: BuildContext,
+    private val players: List<Player>,
+    private val onPlayerSelected: (Player) -> Unit
+) : Node(buildContext = buildContext) {
+
+    @Composable
+    override fun View(modifier: Modifier) {
+        PlayerListScreen(players, onPlayerSelected)
+    }
+
+}
 
 @Composable
 fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
@@ -18,7 +33,7 @@ fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, mod
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            items(list.sortedWith(compareBy<Player> { it.team.name }.thenByDescending { it.valueInMillions })) { player ->
+            items(list.sortedWith(compareBy<Player> { it.team }.thenByDescending { it.valueInMillions })) { player ->
                 PlayerItem(player, onPlayerSelected)
             }
         }
@@ -38,7 +53,7 @@ private fun PlayerItem(player: Player, onItemClicked: (Player) -> Unit, modifier
             fontSize = 18.sp,
             )
         Text(
-            text = "#${player.number} - ${player.position.name}",
+            text = "#${player.number} - ${player.position}",
             fontSize = 14.sp,
             modifier = modifier.padding(start = 4.dp)
         )

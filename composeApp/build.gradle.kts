@@ -57,6 +57,8 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.appyx.navigation)
             api(libs.appyx.material)
+            api(libs.appyx.spotlight)
+            api(libs.appyx.backstack)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

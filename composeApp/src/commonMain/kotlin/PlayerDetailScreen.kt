@@ -8,7 +8,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.node.Node
 
+class PlayerDetailNode(buildContext: BuildContext, private val player: Player) : Node(buildContext) {
+
+    @Composable
+    override fun View(modifier: Modifier) {
+        PlayerDetailScreen(player)
+    }
+
+}
 
 @Composable
 fun PlayerDetailScreen(player: Player, modifier: Modifier = Modifier) {
@@ -21,13 +31,13 @@ fun PlayerDetailScreen(player: Player, modifier: Modifier = Modifier) {
                     padding(top = 24.dp)
         )
         Text(
-            text = player.team.name,
+            text = player.team,
             textAlign = TextAlign.Left,
             fontSize = 18.sp,
             modifier = modifier.padding(top = 8.dp)
         )
         Text(
-            text = "#${ player.number } - ${ player.position.name }",
+            text = "#${ player.number } - ${ player.position }",
             textAlign = TextAlign.Left,
             fontSize = 18.sp,
             modifier = modifier.padding(top = 8.dp)

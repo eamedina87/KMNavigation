@@ -9,7 +9,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
+import kotlin.experimental.ExperimentalObjCRefinement
+import kotlin.native.HiddenFromObjC
 
+@OptIn(ExperimentalObjCRefinement::class)
+@HiddenFromObjC
 class TeamListNode(
     buildContext: BuildContext,
     private val teams: List<Team>,
@@ -23,6 +27,8 @@ class TeamListNode(
 
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {
     Column {
@@ -38,6 +44,8 @@ fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: M
     }
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 private fun TeamItem(team: Team, onItemClick: (Team) -> Unit, modifier: Modifier = Modifier) {
     Row(modifier = modifier.

@@ -9,7 +9,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
+import navigation.BackButtonScaffold
+import kotlin.experimental.ExperimentalObjCRefinement
+import kotlin.native.HiddenFromObjC
 
+@OptIn(ExperimentalObjCRefinement::class)
+@HiddenFromObjC
 class PlayersListNode(
     buildContext: BuildContext,
     private val players: List<Player>,
@@ -23,6 +28,8 @@ class PlayersListNode(
 
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
     Column(
@@ -40,6 +47,8 @@ fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, mod
     }
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 private fun PlayerItem(player: Player, onItemClicked: (Player) -> Unit, modifier: Modifier = Modifier) {
     Column(

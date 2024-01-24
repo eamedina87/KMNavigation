@@ -10,12 +10,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
+import navigation.BackButtonScaffold
+import kotlin.experimental.ExperimentalObjCRefinement
+import kotlin.native.HiddenFromObjC
 
+@OptIn(ExperimentalObjCRefinement::class)
+@HiddenFromObjC
 class TeamDetailNode(
     buildContext: BuildContext,
     private val team: Team,
     private val topPlayers: List<Player>,
-    private val onPlayerSelected: (Player) -> Unit
+    private val onPlayerSelected: (Player) -> Unit,
 ) : Node(buildContext = buildContext) {
 
     @Composable
@@ -25,6 +30,8 @@ class TeamDetailNode(
 
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 fun TeamDetailScreen(team: Team, topPlayers: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {

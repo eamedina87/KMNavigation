@@ -10,8 +10,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
+import navigation.BackButtonScaffold
+import kotlin.experimental.ExperimentalObjCRefinement
+import kotlin.native.HiddenFromObjC
 
-class PlayerDetailNode(buildContext: BuildContext, private val player: Player) : Node(buildContext) {
+@OptIn(ExperimentalObjCRefinement::class)
+@HiddenFromObjC
+class PlayerDetailNode(
+    buildContext: BuildContext,
+    private val player: Player
+) : Node(buildContext) {
 
     @Composable
     override fun View(modifier: Modifier) {
@@ -20,6 +28,8 @@ class PlayerDetailNode(buildContext: BuildContext, private val player: Player) :
 
 }
 
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 @Composable
 fun PlayerDetailScreen(player: Player, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {

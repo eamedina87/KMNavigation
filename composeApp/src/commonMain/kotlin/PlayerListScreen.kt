@@ -18,7 +18,7 @@ fun PlayerListScreen(list: List<Player>, onPlayerSelected: (Player) -> Unit, mod
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            items(list.sortedWith(compareBy<Player> { it.team.name }.thenByDescending { it.valueInMillions })) { player ->
+            items(list.sortedWith(compareBy<Player> { it.team }.thenByDescending { it.valueInMillions })) { player ->
                 PlayerItem(player, onPlayerSelected)
             }
         }
@@ -38,7 +38,7 @@ private fun PlayerItem(player: Player, onItemClicked: (Player) -> Unit, modifier
             fontSize = 18.sp,
             )
         Text(
-            text = "#${player.number} - ${player.position.name}",
+            text = "#${player.number} - ${player.position}",
             fontSize = 14.sp,
             modifier = modifier.padding(start = 4.dp)
         )

@@ -9,7 +9,7 @@ plugins {
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    /*@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -18,8 +18,7 @@ kotlin {
             }
         }
         binaries.executable()
-    }
-    
+    }*/
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -51,10 +50,12 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
+            implementation(compose.animation)
             implementation(compose.material)
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            api(libs.precompose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

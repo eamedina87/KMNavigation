@@ -17,11 +17,7 @@ import com.bumble.appyx.navigation.modality.NodeContext
 import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
-import kotlin.experimental.ExperimentalObjCRefinement
-import kotlin.native.HiddenFromObjC
 
-@OptIn(ExperimentalObjCRefinement::class)
-@HiddenFromObjC
 class PlayersNode(
     context: NodeContext,
     private val backstack: BackStack<PlayerNav> = BackStack(

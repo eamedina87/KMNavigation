@@ -9,13 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.navigation.modality.NodeContext
 import com.bumble.appyx.navigation.node.LeafNode
-import com.bumble.appyx.navigation.node.Node
-import navigation.BackButtonScaffold
-import kotlin.experimental.ExperimentalObjCRefinement
-import kotlin.native.HiddenFromObjC
 
-@OptIn(ExperimentalObjCRefinement::class)
-@HiddenFromObjC
 class PlayersListNode(
     context: NodeContext,
     private val players: List<Player>,

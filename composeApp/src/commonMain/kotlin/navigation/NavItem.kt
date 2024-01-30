@@ -5,7 +5,6 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.ui.Modifier
 import com.bumble.appyx.utils.material3.AppyxNavItem
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
@@ -23,7 +22,6 @@ enum class NavItem : Parcelable {
                     text = "Teams",
                     unselectedIcon = Icons.Outlined.Home,
                     selectedIcon = Icons.Filled.Home,
-                    iconModifier = Modifier,
                     node = { TeamsNode(it) }
                 )
                 
@@ -31,7 +29,6 @@ enum class NavItem : Parcelable {
                     text = "Players",
                     unselectedIcon = Icons.Outlined.Person,
                     selectedIcon = Icons.Filled.Person,
-                    iconModifier = Modifier,
                     node = { PlayersNode(it) }
                 )
             }

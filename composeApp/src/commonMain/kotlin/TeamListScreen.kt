@@ -7,21 +7,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.modality.NodeContext
+import com.bumble.appyx.navigation.node.LeafNode
 import com.bumble.appyx.navigation.node.Node
+import navigation.TeamsNode
 import kotlin.experimental.ExperimentalObjCRefinement
 import kotlin.native.HiddenFromObjC
 
-@OptIn(ExperimentalObjCRefinement::class)
-@HiddenFromObjC
+//@OptIn(ExperimentalObjCRefinement::class)
+//@HiddenFromObjC
 class TeamListNode(
-    buildContext: BuildContext,
+    context: NodeContext,
     private val teams: List<Team>,
     private val onTeamSelected: (Team) -> Unit
-) : Node(buildContext) {
+) : LeafNode(context) {
 
     @Composable
-    override fun View(modifier: Modifier) {
+    override fun Content(modifier: Modifier) {
         TeamListScreen(teams, onTeamSelected)
     }
 

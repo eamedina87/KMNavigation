@@ -8,21 +8,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bumble.appyx.navigation.modality.BuildContext
-import com.bumble.appyx.navigation.node.Node
-import navigation.BackButtonScaffold
+import com.bumble.appyx.navigation.modality.NodeContext
+import com.bumble.appyx.navigation.node.LeafNode
 import kotlin.experimental.ExperimentalObjCRefinement
 import kotlin.native.HiddenFromObjC
 
 @OptIn(ExperimentalObjCRefinement::class)
 @HiddenFromObjC
 class PlayerDetailNode(
-    buildContext: BuildContext,
+    context: NodeContext,
     private val player: Player
-) : Node(buildContext) {
+) : LeafNode(context) {
 
     @Composable
-    override fun View(modifier: Modifier) {
+    override fun Content(modifier: Modifier) {
         PlayerDetailScreen(player)
     }
 

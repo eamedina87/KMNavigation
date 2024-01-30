@@ -7,7 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.navigation.modality.NodeContext
+import com.bumble.appyx.navigation.node.LeafNode
 import com.bumble.appyx.navigation.node.Node
 import navigation.BackButtonScaffold
 import kotlin.experimental.ExperimentalObjCRefinement
@@ -16,13 +17,13 @@ import kotlin.native.HiddenFromObjC
 @OptIn(ExperimentalObjCRefinement::class)
 @HiddenFromObjC
 class PlayersListNode(
-    buildContext: BuildContext,
+    context: NodeContext,
     private val players: List<Player>,
     private val onPlayerSelected: (Player) -> Unit
-) : Node(buildContext = buildContext) {
+) : LeafNode(context) {
 
-    @Composable
-    override fun View(modifier: Modifier) {
+   @Composable
+    override fun Content(modifier: Modifier) {
         PlayerListScreen(players, onPlayerSelected)
     }
 

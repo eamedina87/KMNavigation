@@ -19,7 +19,7 @@ fun MainViewController() = ComposeUIViewController {
             modifier = Modifier,
             onBackPressedEvents = backEvents.receiveAsFlow(),
             integrationPoint = integrationPoint,
-            factory = { RootNode(buildContext = it) }
+            factory = { RootNode(context = it) }
                 )
             }
 }.also {

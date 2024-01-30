@@ -11,10 +11,10 @@ import com.bumble.appyx.components.backstack.BackStackModel
 import com.bumble.appyx.components.backstack.operation.pop
 import com.bumble.appyx.components.backstack.operation.push
 import com.bumble.appyx.components.backstack.ui.fader.BackStackFader
-import com.bumble.appyx.navigation.composable.AppyxComponent
-import com.bumble.appyx.navigation.modality.BuildContext
+import com.bumble.appyx.interactions.core.ui.helper.AppyxComponentSetup
+import com.bumble.appyx.navigation.composable.AppyxNavigationContainer
+import com.bumble.appyx.navigation.modality.NodeContext
 import com.bumble.appyx.navigation.node.Node
-import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
 import kotlin.experimental.ExperimentalObjCRefinement
@@ -23,7 +23,7 @@ import kotlin.native.HiddenFromObjC
 @OptIn(ExperimentalObjCRefinement::class)
 @HiddenFromObjC
 class PlayersNode(
-    context: BuildContext,
+    context: NodeContext,
     private val backstack: BackStack<PlayerNav> = BackStack(
         model = BackStackModel(
             initialTarget = PlayerNav.PlayerList,
@@ -31,8 +31,8 @@ class PlayersNode(
         ),
         visualisation = { BackStackFader(it) }
     )
-) : ParentNode<PlayersNode.PlayerNav>(
-    buildContext = context,
+) : Node<PlayersNode.PlayerNav>(
+    nodeContext = context,
     appyxComponent = backstack
 ) {
 
@@ -44,31 +44,30 @@ class PlayersNode(
     }
 
     @Composable
-    override fun View(modifier: Modifier) {
+    override fun Content(modifier: Modifier) {
         BackButtonScaffold(
             title = topBarTitle,
             hasBackStackElements = backstack.canHandeBackPress().collectAsState(),
             onBackPressed = { backstack.pop() }
         ) {
-            AppyxComponent(
+            AppyxNavigationContainer(
                 appyxComponent = backstack,
                 modifier = modifier
             )
         }
     }
 
-    override fun resolve(interactionTarget: PlayerNav, buildContext: BuildContext): Node =
-        when (interactionTarget) {
-            is PlayerNav.PlayerList -> PlayersListNode(buildContext, allPlayers) {
+    override fun buildChildNode(navTarget: PlayerNav, nodeContext: NodeContext): Node<*> =
+        when (navTarget) {
+            is PlayerNav.PlayerList -> PlayersListNode(nodeContext, allPlayers) {
                 backstack.push(PlayerNav.PlayerDetail(it))
             }
 
             is PlayerNav.PlayerDetail -> {
                 topBarTitle.value = "Player Detail"
-                PlayerDetailNode(buildContext, interactionTarget.player)
+                PlayerDetailNode(nodeContext, navTarget.player)
             }
         }
-
 
 
 }

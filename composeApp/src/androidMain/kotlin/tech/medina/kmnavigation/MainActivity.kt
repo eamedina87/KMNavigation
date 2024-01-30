@@ -24,7 +24,7 @@ class MainActivity : NodeActivity() {
                         modifier = Modifier
                     ) {
                         RootNode(
-                            buildContext = it
+                            context = it
                         )
                     }
                 }

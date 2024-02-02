@@ -9,9 +9,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
-fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = Modifier) {
+fun TeamDetailScreen(team: Team, topPlayers: List<Player>, onPlayerSelected: (Player) -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
         Text(
             text = team.name,
@@ -34,7 +33,7 @@ fun TeamDetailScreen(team: Team, topPlayers: List<Player>, modifier: Modifier = 
         )
         PlayerListScreen(
             list = topPlayers,
-            onPlayerSelected = { }
+            onPlayerSelected = onPlayerSelected
         )
     }
 }

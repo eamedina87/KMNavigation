@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Scaffold
+import navigation.App
 import navigation.BottomBar
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +19,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Scaffold(bottomBar = { BottomBar() }) {
-                PlayerListScreen(allPlayers, { Toast.makeText(this, "Player Selected: $it", Toast.LENGTH_SHORT).show() })
+                App()
+                //PlayerListScreen(allPlayers, { Toast.makeText(this, "Player Selected: $it", Toast.LENGTH_SHORT).show() })
             }
 
             /*TeamListScreen(allTeams, { Toast.makeText(this, "Team Selected: $it", Toast.LENGTH_SHORT).show() })

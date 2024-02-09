@@ -6,10 +6,12 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
+    /*@OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "composeApp"
         browser {
@@ -18,7 +20,7 @@ kotlin {
             }
         }
         binaries.executable()
-    }
+    }*/
     
     androidTarget {
         compilations.all {
@@ -47,6 +49,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.decompose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -55,6 +58,11 @@ kotlin {
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(libs.decompose)
+            implementation(libs.decompose.extensions)
+        }
+        iosMain.dependencies {
+            implementation(libs.decompose.extensions.ios)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

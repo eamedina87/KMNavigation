@@ -15,6 +15,8 @@ compose-compiler = "1.5.6"
 compose-plugin = "1.6.0-alpha01"
 junit = "4.13.2"
 kotlin = "1.9.21"
+decompose = "2.2.2"
+decompose-experimental = "2.2.2-compose-experimental"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -32,6 +34,9 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose-experimental"}
+decompose-extensions = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose-experimental"}
+decompose-extensions-ios = { module = "com.arkivanov.decompose:extensions-compose-jetbrains", version.ref = "decompose-experimental"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

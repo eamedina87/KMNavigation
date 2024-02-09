@@ -21,13 +21,13 @@ fun PlayerDetailScreen(player: Player, modifier: Modifier = Modifier) {
                     padding(top = 24.dp)
         )
         Text(
-            text = player.team.name,
+            text = player.team,
             textAlign = TextAlign.Left,
             fontSize = 18.sp,
             modifier = modifier.padding(top = 8.dp)
         )
         Text(
-            text = "#${ player.number } - ${ player.position.name }",
+            text = "#${ player.number } - ${ player.position }",
             textAlign = TextAlign.Left,
             fontSize = 18.sp,
             modifier = modifier.padding(top = 8.dp)

@@ -7,6 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import navigation.TeamsComponent
+
+@Composable
+fun TeamListContent(component: TeamsComponent, list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {
+    TeamListScreen(list, onTeamSelected, modifier)
+}
 
 @Composable
 fun TeamListScreen(list: List<Team>, onTeamSelected: (Team) -> Unit, modifier: Modifier = Modifier) {

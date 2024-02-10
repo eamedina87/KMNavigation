@@ -38,9 +38,9 @@ private fun RootContent(component: RootComponent, modifier: Modifier = Modifier)
         stack = component.childStack,
         modifier = modifier,
         animation = stackAnimation(fade())
-    ) { child ->
-        when (child.instance) {
-            is RootComponent.RootChild.Teams -> TeamListScreen(allTeams, { }) 
+    ) {
+        when (val child = it.instance) {
+            is RootComponent.RootChild.Teams -> TeamsContent(child.component, modifier)//TeamListScreen(allTeams, { })
             is RootComponent.RootChild.Players -> PlayerListScreen(allPlayers, { })
         }
     }

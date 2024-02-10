@@ -7,6 +7,8 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.router.stack.childStack
 import kotlinx.serialization.Serializable
+import navigation.PlayersComponent
+import navigation.PlayersComponentImpl
 
 interface RootComponent {
     
@@ -16,8 +18,8 @@ interface RootComponent {
     fun onPlayersTabClicked()
     
     sealed class RootChild {
-        data object Teams : RootChild()
-        data object Players : RootChild()
+        data class Teams(val component: TeamsComponent) : RootChild()
+        data class Players(val component: PlayersComponent) : RootChild()
     }
     
 }
@@ -38,9 +40,8 @@ class RootComponentImpl(
 
     private fun child(config: Config, componentContext: ComponentContext): RootComponent.RootChild =
         when (config) {
-            is Config.Players -> RootComponent.RootChild.Players
-            is Config.Teams -> RootComponent.RootChild.Teams
-            else -> throw NoSuchElementException("Root component child not expected")
+            is Config.Players -> RootComponent.RootChild.Players(PlayersComponentImpl(componentContext))
+            is Config.Teams -> RootComponent.RootChild.Teams(TeamsComponentImpl(componentContext))
         }
     
     override fun onTeamsTabClicked() {

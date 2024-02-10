@@ -1,9 +1,7 @@
 package navigation.components
 
 import com.arkivanov.decompose.ComponentContext
-import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.router.stack.StackNavigation
-import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.*
 import com.arkivanov.decompose.value.Value
 import kotlinx.serialization.Serializable
 
@@ -32,12 +30,14 @@ class TeamsComponentImpl(
         )
     
     private fun child(config: Config, componentContext: ComponentContext): TeamsComponent.TeamsChild {
-        val listComponent = TeamListComponentImpl(context = componentContext)
-        val detailComponent = TeamDetailComponentImpl(context = componentContext)
+        val listComponent = TeamListComponentImpl(context = componentContext, onTeamSelected = { navigation.push(Config.Detail(it.name)) })
+
         return when (config) {
             is Config.List -> TeamsComponent.TeamsChild.List(listComponent)
-            is Config.Detail -> TeamsComponent.TeamsChild.Detail(detailComponent)
-            else -> throw NoSuchElementException("TeamsComponent child not expected")
+            is Config.Detail -> {
+                val detailComponent = TeamDetailComponentImpl(context = componentContext, config.id)
+                TeamsComponent.TeamsChild.Detail(detailComponent)
+            }
         }
     }
     
@@ -48,7 +48,7 @@ class TeamsComponentImpl(
         data object List : Config
 
         @Serializable
-        data object Detail : Config
+        data class Detail(val id: String) : Config
     }
 
 }

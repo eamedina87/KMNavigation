@@ -1,4 +1,4 @@
-package navigation
+package navigation.components
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -10,10 +10,9 @@ import kotlinx.serialization.Serializable
 interface TeamsComponent {
     val childStack: Value<ChildStack<*, TeamsChild>>
     
-
     sealed class TeamsChild {
-        data class List(val componentContext: ComponentContext) : TeamsChild()
-        data class Detail(val componentContext: ComponentContext) : TeamsChild()
+        data class List(val component: TeamListComponent) : TeamsChild()
+        data class Detail(val component: TeamDetailComponent) : TeamsChild()
     }
 }
 
@@ -32,11 +31,15 @@ class TeamsComponentImpl(
             childFactory = ::child
         )
     
-    private fun child(config: Config, componentContext: ComponentContext): TeamsComponent.TeamsChild =
-        when (config) {
-            is Config.List -> TeamsComponent.TeamsChild.List(componentContext)
-            is Config.Detail -> TeamsComponent.TeamsChild.Detail(componentContext)
+    private fun child(config: Config, componentContext: ComponentContext): TeamsComponent.TeamsChild {
+        val listComponent = TeamListComponentImpl(context = componentContext)
+        val detailComponent = TeamDetailComponentImpl(context = componentContext)
+        return when (config) {
+            is Config.List -> TeamsComponent.TeamsChild.List(listComponent)
+            is Config.Detail -> TeamsComponent.TeamsChild.Detail(detailComponent)
+            else -> throw NoSuchElementException("TeamsComponent child not expected")
         }
+    }
     
     @Serializable
     private sealed interface Config {

@@ -1,4 +1,4 @@
-package navigation
+package navigation.components
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -40,6 +40,7 @@ class RootComponentImpl(
         when (config) {
             is Config.Players -> RootComponent.RootChild.Players
             is Config.Teams -> RootComponent.RootChild.Teams
+            else -> throw NoSuchElementException("Root component child not expected")
         }
     
     override fun onTeamsTabClicked() {

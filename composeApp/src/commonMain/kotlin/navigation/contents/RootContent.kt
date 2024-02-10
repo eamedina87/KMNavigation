@@ -1,4 +1,4 @@
-package navigation
+package navigation.contents
 
 import PlayerListScreen
 import TeamListScreen
@@ -17,6 +17,7 @@ import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
+import navigation.components.RootComponent
 
 @Composable
 fun MainContent(rootComponent: RootComponent, modifier: Modifier = Modifier) {
@@ -33,14 +34,13 @@ fun MainContent(rootComponent: RootComponent, modifier: Modifier = Modifier) {
 
 @Composable
 private fun RootContent(component: RootComponent, modifier: Modifier = Modifier) {
-    
     Children(
         stack = component.childStack,
         modifier = modifier,
         animation = stackAnimation(fade())
     ) { child ->
         when (child.instance) {
-            is RootComponent.RootChild.Teams -> TeamListScreen(allTeams, { })//todo content 
+            is RootComponent.RootChild.Teams -> TeamListScreen(allTeams, { }) 
             is RootComponent.RootChild.Players -> PlayerListScreen(allPlayers, { })
         }
     }

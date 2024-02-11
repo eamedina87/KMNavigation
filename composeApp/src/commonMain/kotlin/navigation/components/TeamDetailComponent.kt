@@ -12,7 +12,7 @@ interface TeamDetailComponent {
 
 class TeamDetailComponentImpl(
     context: ComponentContext,
-    private val teamId: String
+    teamId: String
 ) : TeamDetailComponent, ComponentContext by context {
 
     private val _team : MutableValue<Team> = MutableValue(allTeams.find { it.name == teamId } ?: allTeams.random())

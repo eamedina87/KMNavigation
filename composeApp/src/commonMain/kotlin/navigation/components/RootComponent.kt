@@ -7,8 +7,6 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.router.stack.childStack
 import kotlinx.serialization.Serializable
-import navigation.PlayersComponent
-import navigation.PlayersComponentImpl
 
 interface RootComponent {
     

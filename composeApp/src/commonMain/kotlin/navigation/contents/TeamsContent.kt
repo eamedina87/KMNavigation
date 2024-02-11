@@ -7,13 +7,10 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
-import com.arkivanov.decompose.extensions.compose.jetbrains.subscribeAsState
-import navigation.components.TeamListComponent
 import navigation.components.TeamsComponent
 
 @Composable
 fun TeamsContent(component: TeamsComponent, modifier: Modifier) {
-    val children = component.childStack.subscribeAsState()
     
     Children(
         stack = component.childStack,

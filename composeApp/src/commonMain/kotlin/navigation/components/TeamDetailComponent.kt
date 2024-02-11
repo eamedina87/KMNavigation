@@ -19,7 +19,6 @@ class TeamDetailComponentImpl(
 
     override val team: Value<Team> = _team
 
-
 } 
 
 

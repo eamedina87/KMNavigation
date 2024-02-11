@@ -19,7 +19,6 @@ class PlayerDetailComponentImpl(
 
     override val player: Value<Player> = _player
 
-
 } 
 
 

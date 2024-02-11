@@ -1,9 +1,5 @@
 package navigation.contents
 
-import PlayerListScreen
-import TeamListScreen
-import allPlayers
-import allTeams
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
